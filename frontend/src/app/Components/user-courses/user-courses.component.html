@@ -1,0 +1,100 @@
+<section
+  class="slider-area slider-area2"
+  style="
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  "
+>
+  <div class="slider-active" style="width: 100%">
+    <div
+      class="single-slider slider-height2 d-flex align-items-center"
+      style="width: 100%"
+    >
+      <div class="container">
+        <h1
+          style="
+            color: white;
+            font-weight: bold;
+            font-size: 34px;
+            align-self: center;
+          "
+        >
+          My Learning
+        </h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container my-5" style="max-width: 1240px">
+  <div *ngIngf="!hasNoCourses" class="d-flex flex-wrap gap-5 p-4">
+    <div class="dropdown mb-4">
+      <a
+        class="btn btn-secondary dropdown-toggle py-1"
+        id="category"
+        role="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        style="background-color: #6772ff; font-weight: bold"
+      >
+        {{ selectedCategory || "Filter by Category" }}
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <a
+            class="dropdown-item btn btn-outline-secondary"
+            (click)="onCategorySelect('')"
+            >All Categories</a
+          >
+        </li>
+        <li *ngFor="let category of categories">
+          <a
+            class="dropdown-item btn btn-outline-secondary"
+            (click)="onCategorySelect(category)"
+            >{{ category }}</a
+          >
+        </li>
+      </ul>
+    </div>
+    <!-- Responsive Search Bar -->
+    <div
+      class="input-group ms-auto"
+      style="max-width: 100%; width: 350px; max-height: 25px"
+    >
+      <input
+        id="search-focus"
+        type="search"
+        class="form-control"
+        placeholder="Search"
+        aria-label="Search"
+        [(ngModel)]="searchTerm"
+        (input)="onSearch()"
+      />
+      <button
+        class="btn btn-outline-primary"
+        type="button"
+        style="background-color: #6772ff"
+      >
+        <i class="fas fa-search" style="color: #fff"></i>
+      </button>
+    </div>
+  </div>
+  <!-- Responsive Course Cards Section -->
+  <div class="d-flex flex-wrap justify-content-start my-2">
+    <div *ngFor="let course of filteredCourses">
+      <a [routerLink]="['/course/content', course.id]" class="course-link">
+        <app-course-card
+          [course]="course"
+          [showHeartIcon]="false"
+          [showProgress]="true"
+        ></app-course-card>
+      </a>
+    </div>
+  </div>
+
+  <div *ngIf="hasNoCourses" class="no-courses-message">
+    <p>No courses enrolled</p>
+  </div>
+</div>

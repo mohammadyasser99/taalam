@@ -1,0 +1,219 @@
+<section class="slider-area slider-area2"
+  style="height: 70px; display: flex; align-items: center; justify-content: center;">
+  <div class="slider-active" style="width: 100%;">
+    <div class="single-slider slider-height2 d-flex align-items-center" style="width: 100%;">
+      <div class="container">
+        <h1 style=" color: white; font-weight: bold; font-size: 34px; align-self: center;">Update Course</h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container mt-5 mb-5">
+  <!-- <h1 class="mb-4 text-center">Edit Course</h1> -->
+  <form [formGroup]="CourseForm" (ngSubmit)="onsubmit()" class="needs-validation" novalidate>
+    <!-- First Row: Title and Category -->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <div class="form-floating mb-3">
+          <input #inputTitle formControlName="title" type="text" id="title" class="form-control"
+            placeholder="Course Title" />
+          <label for="title">Title</label>
+          <div
+            *ngIf="CourseForm.get('title')?.errors && (CourseForm.get('title')?.touched || inputTitle.value.length > 0)"
+            class="text-danger small">
+            <p *ngIf="CourseForm.get('title')?.getError('required')" class="m-0">Title is Required</p>
+            <p *ngIf="CourseForm.get('title')?.getError('minlength')" class="m-0">Title Min Length 5</p>
+            <p *ngIf="CourseForm.get('title')?.getError('maxlength')" class="m-0">Title Max Length 30</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-floating mb-3">
+          <select #inputCategory formControlName="category" id="category" class="form-select"
+            aria-label="Course Category">
+            <option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</option>
+          </select>
+          <label for="category">Category</label>
+          <div
+            *ngIf="CourseForm.get('category')?.errors && (CourseForm.get('category')?.touched || inputCategory.value.length > 0)"
+            class="text-danger small">
+            <p *ngIf="CourseForm.get('category')?.getError('required')" class="m-0">Category is Required</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Second Row: Description -->
+    <div class="row mb-3">
+      <div class="col-12">
+        <div class="form-floating mb-3">
+          <textarea #inputDescription formControlName="description" id="description" class="form-control"
+            placeholder="Course Description" style="height: 100px;"></textarea>
+          <label for="description">Description</label>
+          <div
+            *ngIf="CourseForm.get('description')?.errors && (CourseForm.get('description')?.touched || inputDescription.value.length > 0)"
+            class="text-danger small">
+            <p *ngIf="CourseForm.get('description')?.getError('required')" class="m-0">Description is Required</p>
+            <p *ngIf="CourseForm.get('description')?.getError('minlength')" class="m-0">Description Min Length 50</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Third Row: Cover Picture, Duration, Price -->
+    <div class="row mb-3">
+      <!-- Cover Picture on Left -->
+      <div class="col-md-6">
+        <div class="mb-3">
+          <ngx-dropzone (change)="onSelect($event)" [accept]="'image/*'">
+            <ngx-dropzone-label>Drag and Drop an Image File for Cover Picture</ngx-dropzone-label>
+            <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+              <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+            </ngx-dropzone-preview>
+          </ngx-dropzone>
+          <div *ngIf="CourseForm.get('coverPicture')?.invalid && CourseForm.get('coverPicture')?.touched"
+            class="text-danger small">
+            Cover picture is required.
+          </div>
+        </div>
+      </div>
+      <!-- Duration and Price on Right -->
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-12 mb-3">
+            <div class="form-floating">
+              <input #inputDuration formControlName="duration" type="text" id="duration" class="form-control"
+                placeholder="Course Duration" />
+              <label for="duration">Duration</label>
+              <div
+                *ngIf="CourseForm.get('duration')?.errors && (CourseForm.get('duration')?.touched || inputDuration.value.length > 0)"
+                class="text-danger small">
+                <p *ngIf="CourseForm.get('duration')?.getError('required')" class="m-0">Duration is Required</p>
+                <p *ngIf="CourseForm.get('duration')?.getError('pattern')" class="m-0">Duration Must be a Number</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 mb-3">
+            <div class="form-floating">
+              <input #inputprice formControlName="price" type="text" id="price" class="form-control"
+                placeholder="Course Price" />
+              <label for="price">Price</label>
+              <div
+                *ngIf="CourseForm.get('price')?.errors && (CourseForm.get('price')?.touched || inputprice.value.length > 0)"
+                class="text-danger small">
+                <p *ngIf="CourseForm.get('price')?.getError('required')" class="m-0">Price is Required</p>
+                <p *ngIf="CourseForm.get('price')?.getError('pattern')" class="m-0">Price Must be a Number</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- Section Management -->
+    <h4 class="mt-4 mb-3" style="text-align: center;">Sections Area</h4>
+<div class="mb-3" style="text-align: center;">
+  <button type="button" class="btn btn-outline-primary btn-sm mb-3" (click)="addSection()">
+    <i class="bx bx-plus-circle"></i> Add Section
+  </button>
+</div>
+
+<div class="accordion mb-4" id="sectionsAccordion" formArrayName="sections">
+  <div class="accordion-item" *ngFor="let section of sections.controls; let sectionIndex = index"
+    [formGroupName]="sectionIndex">
+    <h2 class="accordion-header" id="sectionHeading{{ sectionIndex }}">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse"
+        [attr.data-bs-target]="'#sectionCollapse' + sectionIndex" aria-expanded="true"
+        [attr.aria-controls]="'sectionCollapse' + sectionIndex">
+        Section {{ sectionIndex + 1 }}: {{ section.get('sectionTitle')?.value || 'Untitled' }}
+      </button>
+    </h2>
+    <div id="sectionCollapse{{ sectionIndex }}" class="accordion-collapse collapse show"
+      [attr.aria-labelledby]="'sectionHeading' + sectionIndex" data-bs-parent="#sectionsAccordion">
+      <div class="accordion-body">
+        <!-- Section Title Input -->
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Section Title" formControlName="sectionTitle" />
+          <button type="button" class="btn btn-danger" (click)="removeSection(sectionIndex)">
+            <i class="bx bx-minus"></i>
+          </button>
+        </div>
+        <div *ngIf="section.get('sectionTitle')?.invalid && section.get('sectionTitle')?.touched"
+          class="text-danger small">
+          <p *ngIf="section.get('sectionTitle')?.getError('required')" class="m-0">Section title is required.</p>
+        </div>
+
+        <!-- Lesson Management -->
+        <h5 class="mt-3 mb-2">Lessons</h5>
+        <button type="button" class="btn btn-outline-success btn-sm mb-3" (click)="addLesson(sectionIndex)">
+          <i class="bx bx-plus-circle"></i> Add Lesson
+        </button>
+
+        <div class="accordion mb-4" [attr.id]="'lessonsAccordion' + sectionIndex" formArrayName="lessons">
+          <div class="accordion-item"
+            *ngFor="let lesson of getLessons(sectionIndex).controls; let lessonIndex = index"
+            [formGroupName]="lessonIndex">
+            <h2 class="accordion-header" [attr.id]="'lessonHeading' + sectionIndex + '-' + lessonIndex">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                [attr.data-bs-target]="'#lessonCollapse' + sectionIndex + '-' + lessonIndex" aria-expanded="false"
+                [attr.aria-controls]="'lessonCollapse' + sectionIndex + '-' + lessonIndex">
+                Lesson {{ lessonIndex + 1 }}: {{ lesson.get('lessonTitle')?.value || 'Untitled' }}
+              </button>
+            </h2>
+            <div [attr.id]="'lessonCollapse' + sectionIndex + '-' + lessonIndex" class="accordion-collapse collapse"
+              [attr.aria-labelledby]="'lessonHeading' + sectionIndex + '-' + lessonIndex"
+              [attr.data-bs-parent]="'#lessonsAccordion' + sectionIndex">
+              <div class="accordion-body">
+                <div class="row align-items-center">
+                  <!-- Lesson Title Input -->
+                  <div class="col-lg-5 mb-3">
+                    <input type="text" class="form-control" placeholder="Lesson Title"
+                      formControlName="lessonTitle" />
+                    <div *ngIf="lesson.get('lessonTitle')?.invalid && lesson.get('lessonTitle')?.touched"
+                      class="text-danger small">
+                      <p *ngIf="lesson.get('lessonTitle')?.getError('required')" class="m-0">Lesson title is required.</p>
+                    </div>
+                  </div>
+
+                  <!-- Drag-and-Drop Video Upload -->
+                  <div class="col-lg-6 mb-3">
+                    <ngx-dropzone (change)="onSelectLessonFile($event, sectionIndex, lessonIndex)"
+                      [accept]="'video/*'">
+                      <ngx-dropzone-label>Drag and Drop Your Video</ngx-dropzone-label>
+                      <ngx-dropzone-preview *ngFor="let f of lessonsFiles[sectionIndex]?.[lessonIndex] || []"
+                        [removable]="true" (removed)="onRemoveLessonFile(f, sectionIndex, lessonIndex)">
+                        <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                      </ngx-dropzone-preview>
+                    </ngx-dropzone>
+                    <div *ngIf="lesson.get('lessonUrl')?.invalid && lesson.get('lessonUrl')?.touched"
+                      class="text-danger small mt-2">
+                      <p *ngIf="lesson.get('lessonUrl')?.getError('required')" class="m-0">Video upload is required.</p>
+                    </div>
+                  </div>
+
+                  <!-- Remove Lesson Button -->
+                  <div class="col-lg-1">
+                    <button type="button" class="btn btn-danger" (click)="removeLesson(sectionIndex, lessonIndex)">
+                      <i class="bx bx-minus"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Submit Button -->
+    <div class="text-center mt-3">
+      <button class="btn btn-primary btn-lg saveBtn" type="submit" [disabled]="CourseForm.invalid">
+        <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i> Update Course</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,186 @@
+/* Smaller, compact pagination with hover effect */
+.pagination .page-link {
+  font-size: 0.9rem; /* Smaller font size */
+  padding: 8px 12px; /* Smaller padding */
+  transition: all 0.7s ease-in-out; /* Smooth transition */
+  border-radius: 30px !important; /* Rounded pill style */
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Hover effect on pagination */
+.pagination .page-link:hover {
+  background-color: #343a40; /* Darken on hover */
+  color: #fff;
+  transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+/* Active page style */
+.page-item .active-page {
+  background-color: #343a40; /* Dark background for active page */
+  color: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Disabled state */
+.pagination .disabled .page-link {
+  background-color: #e9ecef;
+  color: #6c757d;
+}
+
+/* Hover effect and icon alignment */
+.page-link i {
+  vertical-align: middle;
+}
+
+/* Minimized pagination */
+.pagination-sm .page-link {
+  font-size: 0.85rem; /* Minimize font size */
+  padding: 5px 10px; /* Compact padding */
+  margin: 0 4px;
+}
+.hover-course{
+  transition: all 0.7s ease-in-out; /* Smooth transition */
+}
+
+.hover-course:hover{
+  transform: scale(1.5);
+}
+
+/* ------------------------------------------------------------ */
+/* General button style */
+.btn-social {
+  background-color: #343a40; /* Dark gray color for uniformity */
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+}
+
+/* Icons inside buttons */
+.btn-social i {
+  margin-right: 10px;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+/* Button hover effect */
+.btn-social:hover {
+  background-color: #495057; /* Slightly lighter dark color */
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effect for icons */
+.btn-social:hover i {
+  transform: scale(1.2); /* Enlarge icon on hover */
+}
+
+/* Specific button styles */
+.twitter-btn::before {
+  content: '\f099'; /* FontAwesome Twitter icon */
+  font-family: 'FontAwesome';
+  position: absolute;
+  left: 15px;
+  opacity: 0.1;
+  font-size: 4rem;
+}
+
+.facebook-btn::before {
+  content: '\f09a'; /* FontAwesome Facebook icon */
+  font-family: 'FontAwesome';
+  position: absolute;
+  left: 15px;
+  opacity: 0.1;
+  font-size: 4rem;
+}
+
+.linkedin-btn::before {
+  content: '\f0e1'; /* FontAwesome LinkedIn icon */
+  font-family: 'FontAwesome';
+  position: absolute;
+  left: 15px;
+  opacity: 0.1;
+  font-size: 4rem;
+}
+
+.youtube-btn::before {
+  content: '\f16a'; /* FontAwesome YouTube icon */
+  font-family: 'FontAwesome';
+  position: absolute;
+  left: 15px;
+  opacity: 0.1;
+  font-size: 4rem;
+}
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.truncate-multiline {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.card {
+  position: relative;
+}
+
+.heart-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.fa-heart {
+  color: rgb(30, 48, 80);
+}
+
+.stars i {
+  color: #ffd700;
+}
+.category-badge {
+  display: inline-block;
+  padding: 0.25rem 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #212529;
+  background-color: #eff0f1;
+  border-radius: 0.25rem;
+  text-align: center;
+}
+
+.about-me-section {
+  background-color: #f9f9f9; /* Light background for contrast */
+  padding: 20px; /* Adds spacing around the content */
+  border-radius: 8px; /* Rounds the corners for a smoother look */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  margin-bottom: 20px; /* Space between sections */
+}
+
+.about-title {
+  font-size: 1.75rem; /* Slightly larger heading */
+  color: #6772ff;
+  font-weight: 600; /* Bold heading */
+  text-transform: uppercase; /* Capitalized title */
+}
+
+.about-description {
+  font-size: 1rem; /* Regular size for readability */
+  color: #555; /* Muted text color */
+  line-height: 1.6; /* Increased line height for better readability */
+  margin-top: 10px;
+  text-align: justify; /* Justifies the text for cleaner alignment */
+}

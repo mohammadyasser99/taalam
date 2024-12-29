@@ -1,0 +1,393 @@
+
+
+/* butttonnsssss */
+.logoutbtn{
+  cursor: pointer;
+  color: red;
+}
+.button-header.margin-left {
+  margin-left: 43px !important;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .button-header.margin-left {
+    margin-left: 0px !important;
+    margin-bottom: 8px !important;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .button-header.margin-left {
+    margin-left: 0px !important;
+    margin-bottom: 8px !important;
+  }
+}
+@media (max-width: 575px) {
+  .button-header.margin-left {
+    margin-left: 0px !important;
+    margin-bottom: 8px !important;
+  }
+}
+.button-header {
+  margin: 0 !important;
+}
+
+
+
+.btn:hover::before {
+  transform: scaleX(1);
+  color: #fff !important;
+  z-index: -1;
+}
+.header-btn {
+  text-transform: uppercase;
+}
+.btn.focus,
+.btn:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+
+.btn {
+  background: #ff9f67;
+  font-family: "Josefin Sans", sans-serif;
+  text-transform: capitalize;
+  padding: 25px 38px !important;
+  color: #fff;
+  cursor: pointer;
+  display: inline-blockc !important;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 5px;
+  line-height: 1;
+  -moz-user-select: none;
+  letter-spacing: 1px;
+  line-height: 0;
+  margin-bottom: 0;
+  cursor: pointer;
+  transition: color 0.4s linear;
+  position: relative;
+  z-index: 1;
+  border: 0;
+  overflow: hidden;
+  margin: 0;
+  display: inline-block !important;
+}
+.btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 101%;
+  height: 101%;
+  background: #ae59ff;
+  z-index: 1;
+  border-radius: 5px;
+  transition: transform 0.5s;
+  transition-timing-function: ease;
+  transform-origin: 0 0;
+  transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+  transform: scaleX(0);
+  border-radius: 0px;
+}
+.btn:hover {
+  background-position: right;
+}
+.btn:hover::before {
+  transform: scaleX(1);
+  color: #fff !important;
+  z-index: -1;
+}
+
+
+.btn.focus,
+.btn:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.custom-button {
+    border-radius: 20px; /* Adjust the value as needed */
+}
+
+
+
+
+/* Custom styles for the dropdown menu */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  z-index: 1000;
+}
+
+/* .dropdown-menu.show {
+  display: block;
+} */
+
+.dropdown-item {
+  padding: 0.5rem 1rem;
+  color: #212529;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-item:hover {
+  background-color: #e9ecef;
+}
+
+
+/* whole navbar */
+/* Ensure that the navbar content is hidden by default on small screens */
+
+
+/* search */
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  margin: 1rem auto;
+  width: 50%;
+}
+
+.search-container {
+  position: relative;
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding-left: 2.5rem; /* Adjust based on icon size */
+  border-radius: 20px;
+  border: none; /* Customize as needed */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  padding-top: 8px;
+  padding-bottom: 8px;
+  outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.5rem; /* Adjust as needed */
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999; /* Customize as needed */
+  cursor: pointer;
+}
+
+  .search-btn:hover,  .search-btn:selection{
+    background-color: #9AAEFD
+  }
+
+  .nav-link{
+   color:#fff !important;
+  }
+  .nav-link:hover{
+    color:#404DFF !important;
+  }
+
+  /* Top Bar Styles */
+/* Offer Bar Styling */
+.top-bar{
+  background-color: #FF9F67;
+}
+.offer-bar {
+  background-color: #f8f9fa; /* Light background color */
+  border-bottom: 1px solid #e9ecef; /* Subtle border */
+  padding: 10px 0; /* Padding for spacing */
+  text-align: center; /* Center all content */
+}
+
+.offer-text {
+  font-size: 16px; /* Font size */
+  color: #333; /* Main text color */
+  margin: 0; /* Remove default margin */
+  font-weight: normal; /* Normal weight for main text */
+}
+
+/* Timer Styling */
+.offer-timer {
+  font-size: 18px; /* Slightly larger font for the timer */
+  font-weight: bold; /* Bold text */
+  color: black; /* Red color for the countdown */
+  position: relative;
+  top:-3px;
+  
+   /* Small spacing above the timer */
+}
+
+.offer-link {
+  font-weight: bold; /* Make the link bold */
+  text-decoration: underline; /* Underline the link */
+}
+
+.offer-link:hover {
+  color: #007bff; /* Change color on hover */
+  text-decoration: none; /* Remove underline on hover */
+}
+
+
+/*coloring header*/
+#mainNavbar {
+  background: linear-gradient(to bottom, #c054ff 0%, #6274FF);
+
+}
+
+/* user profile */
+
+
+
+/* Ensure the dropdown-menu is hidden by default on small screens */
+.dropdown-menu {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Show dropdown menu when active */
+.dropdown-menu.show {
+  display: block;
+  opacity: 1;
+}
+
+/* User Dropdown Styles for Small Screens */
+#userDropdown .dropdown-menu {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: #333;
+  position: absolute;
+  right: 0; /* Adjust as needed */
+  top: 100%; /* Position below the icon */
+  background-color: #fff;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+#userDropdown .dropdown-menu.show {
+  display: block;
+  opacity: 1;
+}
+
+#userDropdown .dropdown-menu a {
+  padding: 10px;
+  color: #000;
+}
+
+#userDropdown .dropdown-menu a:hover {
+  
+  background-color: #f1f1f1;
+}
+
+
+
+
+
+/* user icon */
+/* Custom CSS */
+#userDropdown:hover .dropdown-menu {
+  display: block !important;
+}
+
+#userDropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%; /* Ensure it appears below the icon */
+  left: -76px; /* Adjust position as needed */
+  background-color: #fff; /* Set background */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1); /* Add some shadow */
+  border-radius: 5px;
+}
+
+#userDropdown .dropdown-menu a {
+  padding: 10px;
+  color: #000; /* Adjust text color */
+}
+
+#userDropdown .dropdown-menu a:hover {
+  background-color: #f1f1f1; /* Highlight on hover */
+}
+
+
+
+
+
+@media (max-width: 991px) {
+  .navbar-collapse {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+  }
+
+  .navbar-collapse.show {
+    display: block;
+    opacity: 1;
+    background-color: #C86FFF;
+    max-width:350px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Handle dropdown menu visibility */
+  .dropdown-menu {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: #333;
+  }
+
+  .dropdown-menu.show {
+    display: block;
+    opacity: 1;
+    color: #333;
+
+  }
+  .nav-link{
+    color:#fff !important;
+    align-self: flex-start;
+
+   }
+   
+
+   .navbar-nav{
+    background-color: transparent;
+    
+   }
+   .nav-item{
+    align-self: flex-start;
+    padding-left: 30px;
+   }
+   
+   .search-container{
+    align-self: flex-start;
+    position: relative;
+    left:-60px;
+   }
+   .fa-user{
+    padding-top: 10px;
+    padding-bottom: 10px;
+   }
+
+
+   #userDropdown .dropdown-menu {
+    
+    position: absolute !important;
+    left:30px !important;
+    
+  }
+
+  .top-bar{
+   display: block !important;
+  }
+
+  
+  
+}
+
+
+/* badge */
+/* .cls-bdg{
+  position: relative;
+} */

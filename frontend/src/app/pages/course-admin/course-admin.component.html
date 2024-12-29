@@ -1,0 +1,96 @@
+<!-- src/app/components/admin-course-table/admin-course-table.component.html -->
+<div class="container mt-4">
+  <h2>Admin Courses Table</h2>
+
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="searchTerm"
+      placeholder="Search courses..."
+      aria-label="Search courses"
+    />
+    <button class="btn btn-primary" (click)="onSearch()">Search</button>
+  </div>
+
+  <table class="table table-hover table-bordered">
+    <thead class="table-light">
+      <tr>
+        <th (click)="onSort('title')" class="sortable">
+          Title
+          <span *ngIf="sortBy === 'title'">
+            <i class="bi" [ngClass]="sortOrder === 'asc' ? 'bi-arrow-up' : 'bi-arrow-down'"></i>
+          </span>
+        </th>
+        <th (click)="onSort('description')" class="sortable">
+          Description
+          <span *ngIf="sortBy === 'description'">
+            <i class="bi" [ngClass]="sortOrder === 'asc' ? 'bi-arrow-up' : 'bi-arrow-down'"></i>
+          </span>
+        </th>
+        <th (click)="onSort('categoryName')" class="sortable">
+          Category
+          <span *ngIf="sortBy === 'categoryName'">
+            <i class="bi" [ngClass]="sortOrder === 'asc' ? 'bi-arrow-up' : 'bi-arrow-down'"></i>
+          </span>
+        </th>
+        <th (click)="onSort('instructorName')" class="sortable">
+          Instructor
+          <span *ngIf="sortBy === 'instructorName'">
+            <i class="bi" [ngClass]="sortOrder === 'asc' ? 'bi-arrow-up' : 'bi-arrow-down'"></i>
+          </span>
+        </th>
+        <th (click)="onSort('enrollmentCount')" class="sortable">
+          Enrollments
+          <span *ngIf="sortBy === 'enrollmentCount'">
+            <i class="bi" [ngClass]="sortOrder === 'asc' ? 'bi-arrow-up' : 'bi-arrow-down'"></i>
+          </span>
+        </th>
+        <th (click)="onSort('creationDate')" class="sortable">
+          Creation Date
+          <span *ngIf="sortBy === 'creationDate'">
+            <i class="bi" [ngClass]="sortOrder === 'asc' ? 'bi-arrow-up' : 'bi-arrow-down'"></i>
+          </span>
+        </th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses">
+        <td>{{ course.title }}</td>
+        <td>{{ course.description }}</td>
+        <td>{{ course.categoryName }}</td>
+        <td>{{ course.instructorName }}</td>
+        <td>{{ course.enrollmentCount }}</td>
+        <td>{{ course.creationDate | date }}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="openDeleteModal(course.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ngb-pagination
+    [collectionSize]="totalCourses"
+    [(page)]="page"
+    [pageSize]="pageSize"
+    (pageChange)="onPageChange($event)"
+  ></ngb-pagination>
+
+  <!-- Delete Confirmation Modal -->
+  <ng-template #deleteModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Delete Course</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+    </div>
+    <div class="modal-body">
+      <p>Are you sure you want to delete this course?</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="confirmDelete(modal)">Delete</button>
+      <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancel</button>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,43 @@
+<div class="rating-cards mt-4">
+  <div *ngFor="let rating of paginatedRatings" class="card rating-card mb-3">
+    <div class="card-body d-flex">
+      <img
+        [src]="rating.student.profilePicture || 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg?20200418092106'"
+        class="rounded-circle avatar me-3"
+        alt="Student Profile Picture"
+      />
+      <div>
+        <h5 class="card-title">{{ rating.student.name }}</h5>
+        <div class="rating mb-2">
+          <i
+            class="fa fa-star"
+            *ngFor="let _ of [].constructor(rating.value)"
+          ></i>
+          <span>{{ rating.value }} / 5</span>
+        </div>
+        <p class="card-text">
+          {{ rating.description || "No feedback provided." }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <nav *ngIf="totalPages > 1" aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link" (click)="goToPage(currentPage - 1)" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li *ngFor="let page of [].constructor(totalPages); let i = index" class="page-item" [class.active]="currentPage === (i + 1)">
+        <a class="page-link" (click)="goToPage(i + 1)">{{ i + 1 }}</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <a class="page-link" (click)="goToPage(currentPage + 1)" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

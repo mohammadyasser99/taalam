@@ -1,0 +1,94 @@
+<div class="container-xl px-4 mt-4">
+    <hr class="mt-0 mb-4">
+    <div class="row">
+        <div class="col-xl-4">
+            <!-- Profile picture card-->
+            <div class="card mb-4 mb-xl-0">
+                <div class="card-header" style="background: #6772ff;color:#fff;font-size: 24px;font-weight: bold;">
+                    Profile Picture</div>
+                <div class="card-body text-center">
+                    <img [src]="profilePicture || user.profilePicture || defaultProfilePicture" alt="Profile Picture"
+                        class="img-account-profile rounded-circle mb-4"
+                        style="width: 170px; height: 170px; object-fit: fill;">
+                    <input class="saveBtn" type="file" id="profilePicture" (change)="onFileSelected($event)" />
+                    <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-8">
+            <!-- Account details card-->
+            <div class="card mb-4">
+                <div class="card-header" style="background: #6772ff;color:#fff;font-size: 24px;font-weight: bold;">Edit
+                    Profile</div>
+                <div class="card-body">
+                    <div class="row gx-3 mb-3">
+                        <!-- Form Group (first name)-->
+                        <div class="col-md-6">
+                            <label class="small mb-1" for="fName" style="font-size: 14px;font-weight:bold ;"
+                                for="fName">First name</label>
+                            <input class="form-control" id="fName" type="text" placeholder="Enter your first name"
+                                [(ngModel)]="user.fName">
+                        </div>
+                        <!-- Form Group (last name)-->
+                        <div class="col-md-6">
+                            <label class="small mb-1" for="lName" style="font-size: 14px;font-weight:bold ;">Last
+                                name</label>
+                            <input class="form-control" id="lName" type="text" placeholder="Enter your last name"
+                                [(ngModel)]="user.lName">
+                        </div>
+                    </div>
+                    <div class="row gx-3 mb-3">
+                        <!-- Form Group (Bio)-->
+                        <div class="col-md-6">
+                            <label class="small mb-1" for="description"
+                                style="font-size: 14px;font-weight:bold ;">Bio</label>
+                            <input class="form-control" id="description" type="text" placeholder="Enter your bio"
+                                [(ngModel)]="user.description">
+                        </div>
+                        <!-- Form Group (Youtube)-->
+                        <div class="col-md-6">
+                            <label class="small mb-1" for="youtube"
+                                style="font-size: 14px;font-weight:bold ;">Youtube</label>
+                            <input class="form-control" id="youtube" type="text"
+                                placeholder="Enter your Youtube account" [(ngModel)]="user.youtube">
+                        </div>
+                    </div>
+                    <div class="row gx-3 mb-3">
+                        <!-- Form Group (Github)-->
+                        <div class="col-md-6">
+                            <label class="small mb-1" for="github"
+                                style="font-size: 14px;font-weight:bold ;">Github</label>
+                            <input class="form-control" id="github" type="text" placeholder="Enter your Github account"
+                                [(ngModel)]="user.github">
+                        </div>
+                        <!-- Form Group (LinkedIn)-->
+                        <div class="col-md-6">
+                            <label class="small mb-1" for="linkedin"
+                                style="font-size: 14px;font-weight:bold ;">LinkedIn</label>
+                            <input class="form-control" id="linkedin" type="text"
+                                placeholder="Enter your LinkedIn account" [(ngModel)]="user.linkedin">
+                        </div>
+                    </div>
+                    <div class="row gx-3 mb-3">
+                        <!-- Form Group (X)-->
+                        <div class="col-md-6">
+                            <label class="small mb-1" for="twitter" style="font-size: 14px;font-weight:bold ;">X</label>
+                            <input class="form-control" id="twitter" type="text" placeholder="Enter your X account"
+                                [(ngModel)]="user.twitter">
+                        </div>
+                        <!-- Form Group (Facebook)-->
+                        <div class="col-md-6">
+                            <label class="small mb-1" for="facebook"
+                                style="font-size: 14px;font-weight:bold ;">Facebook</label>
+                            <input class="form-control" id="facebook" type="text"
+                                placeholder="Enter your Facebook account" [(ngModel)]="user.facebook">
+                        </div>
+                    </div>
+                    <form>
+                        <button class="saveBtn" type="button" (click)="saveChanges(user)">Save changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

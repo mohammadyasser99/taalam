@@ -1,0 +1,36 @@
+.card {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.ngb-progressbar {
+  height: 20px;
+}
+
+.btn {
+  border-radius: 20px;
+}
+
+.badge {
+  font-size: 0.9rem;
+}
+
+.card-footer {
+  font-size: 0.9rem;
+}
+.card.border-success {
+  border-width: 2px;
+}
+
+.card-footer.bg-success {
+  background-color: #7b7d8c !important;
+}
+
+.card-footer.bg-light {
+  background-color: #7b7d8c;
+}

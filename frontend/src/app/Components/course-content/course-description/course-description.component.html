@@ -1,0 +1,101 @@
+<div
+  class="card  mb-4"
+  style="border:none"
+  [ngClass]="{ 'border-success': selectedLesson.isCompleted }"
+>
+  <!-- Lesson Title and Progress -->
+  <div class="card-header text-white d-flex justify-content-between align-items-center" style="background-color: #7b7d8c;">
+    <h5 class="mb-0">
+      {{ selectedLesson?.title || "No description available" }}
+      <span class="badge bg-light text-dark ms-2">
+        {{ selectedLesson.isCompleted ? 'Completed' : 'In Progress' }}
+      </span>
+    </h5>
+    <!-- Progress Tag -->
+    <span class="badge bg-light text-dark">
+      Progress: {{ progressPercentage.toFixed(1) }}%
+    </span>
+  </div>
+
+  <div class="card-body">
+    <!-- Progress Bar with Tooltip -->
+    <div class="mb-3">
+      <ngb-progressbar
+        class="progress-bar-striped"
+        [showValue]="true"
+        type="success"
+        [value]="progressPercentage"
+        aria-labelledby="progress-tooltip"
+      ></ngb-progressbar>
+      <small id="progress-tooltip" class="form-text text-muted">
+        Course progress: {{ progressPercentage.toFixed(1) }}%
+      </small>
+    </div>
+
+    <!-- Buttons Section -->
+    <div class="d-flex justify-content-start align-items-center gap-3">
+
+      
+      <button
+        class="btn btn-secondary"
+        (click)="goToPrevLession()"
+        [disabled]="isFirstLesson || !selectedLesson"
+        placement="top"
+        ngbTooltip="Go to the previous lesson"
+      >
+        <i class="bi-arrow-left me-2"></i> Previous Lesson
+      </button>
+      
+      <!-- Mark as Completed Button -->
+      <button
+        class="btn btn-success"
+        (click)="markAsCompleted()"
+        [disabled]="(loading$ | async) || selectedLesson.isCompleted"
+        placement="top"
+        ngbTooltip="Mark this lesson as completed"
+      >
+        <i class="bi-check-circle me-2"></i>
+        {{ selectedLesson.isCompleted ? "Completed" : "Mark as Completed" }}
+        <span *ngIf="loading$ | async" class="spinner-border spinner-border-sm ms-2"></span>
+      </button>
+
+      <!-- Rate this Course Button -->
+      <button
+        class="btn "
+        style="background-color: #FFD700;"
+        (click)="openRatingModal()"
+        placement="top"
+        ngbTooltip="Rate this course after completion"
+      >
+        <i class="bi-star me-2"></i> Rate this Course
+      </button>
+
+
+      <button
+        class="btn btn-secondary"
+        (click)="goToNextLesson()"
+        [disabled]="isLastLesson || !selectedLesson"
+        placement="bo"
+        ngbTooltip="Go to the next lesson"
+      >
+        <i class="bi-arrow-right me-2"></i> Next Lesson
+      </button>
+
+        @if(progressPercentage==100){<button  class="btn btn-primary" (click)="downloadCertificate()">Download Certificate</button>}
+    </div>
+  </div>
+
+  <!-- Lesson Details and Status -->
+  <div
+    class="card-footer"
+    [ngClass]="{
+      'bg-success text-white': selectedLesson.isCompleted,
+      'bg-light text-secondary': !selectedLesson.isCompleted
+    }"
+  >
+    <p class="mb-0">
+      {{ selectedLesson.isCompleted ? 'Lesson Completed' : 'Lesson In Progress' }}
+      | Duration: {{ selectedLesson.duration || 'N/A' }}
+    </p>
+  </div>
+</div>

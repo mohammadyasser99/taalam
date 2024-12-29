@@ -1,0 +1,110 @@
+<div class="container-fluid fixed-top px-0 wow fadeIn" data-wow-delay="0.1s">
+  <!-- Top Bar -->
+  <div class="top-bar row gx-0 align-items-center d-none d-lg-flex">
+    <!-- Top Bar -->
+
+    <div class="col text-center">
+      <p class="mb-0 offer-text">
+        Limited Time Offer! Get 20% off on all courses.
+      </p>
+      <span *ngIf="isBrowser; else staticMessage" class="offer-timer">
+        Ends in: {{ countdown$ | async }}
+      </span>
+
+      <ng-template #staticMessage>
+        <span class="offer-ttimer">Special Offer</span>
+      </ng-template>
+    </div>
+  </div>
+
+  <!-- Main Navbar -->
+  <nav
+    id="mainNavbar"
+    class="navbar navbar-expand-lg navbar-light py-lg-0 px-lg-5 wow fadeIn"
+  >
+    <a
+      class="navbar-brand d-flex align-items-center ms-4 ms-lg-0"
+      routerLink="home"
+    >
+      <img src="assets/img/l2.svg" alt="Logo" class="me-2" />
+      <!-- Use margin-end to add space between img and h1 -->
+      <h1 class="display-5 m-0" style="color: #fff">Taalam</h1>
+    </a>
+
+    <button
+      class="navbar-toggler me-4"
+      type="button"
+      (click)="toggleNavbar()"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div
+      class="collapse navbar-collapse"
+      [ngClass]="{ show: isNavbarOpen }"
+      id="navbarSupportedContent"
+    >
+      <!-- Left Side Nav Links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            style="cursor: pointer;"
+            (click)="toggleDropdown('categoryDropdown')"
+            >Category</a
+          >
+          <ul
+            class="dropdown-menu"
+            [ngClass]="{ show: isDropdownOpen['categoryDropdown'] }"
+          >
+            <li *ngFor="let category of categories">
+              <a
+                class="dropdown-item"
+                [routerLink]="['/category', category.id]"
+                >{{ category.name }}</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Search Bar -->
+      <form class="search-form" (ngSubmit)="onSearch()">
+        <div class="search-container">
+          <i class="search-icon fas fa-search" (click)="onSearch()"></i>
+          <input
+            class="search-input"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            [(ngModel)]="searchTerm"
+            name="searchQuery"
+          />
+        </div>
+      </form>
+
+      <!-- Right Side Icons -->
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center">
+        <li class="nav-item">
+          <a
+            class="nav-link text-capitalize"
+            routerLink="login"
+            routerLinkActive="active"
+            >Login</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link text-capitalize"
+            routerLink="register"
+            routerLinkActive="active"
+            >Register</a
+          >
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>

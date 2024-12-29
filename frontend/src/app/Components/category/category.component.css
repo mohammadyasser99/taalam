@@ -1,0 +1,64 @@
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .truncate-multiline {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  
+  .card {
+    position: relative;
+  }
+  
+  .heart-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .fa-heart {
+    color: rgb(30, 48, 80);
+  }
+  
+  .stars i {
+    color: #ffd700;
+  }
+  .category-badge {
+    display: inline-block;
+    padding: 0.25rem 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #212529;
+    background-color: #eff0f1;
+    border-radius: 0.25rem;
+    text-align: center;
+  }
+.slider-area{
+    background: linear-gradient(to bottom,#6473FF  0%,#4e5bca );
+    position: relative;
+    top:24px;
+  }
+  
+  @media (max-width: 991px) {
+    .slider-area{
+       background: linear-gradient(to bottom,#6473FF  0%,#4e5bca );
+       position: relative;
+       top:-34px;
+    }
+  }
+  .course-link {
+    text-decoration: none; 
+    color: inherit;
+  }
+  
+  .course-link:hover {
+    text-decoration: none;
+  }
+ 

@@ -1,0 +1,22 @@
+@if(course){
+
+  <div class="container pt-5 test">
+    <div class="row">
+      <!-- Left Column: Course Details -->
+      <div class="col-lg-8">
+        <app-course-details-header [isenrolled]="isenrolled" [isauth]="isauth" [course]="course"></app-course-details-header>
+        <app-sections-list [sections]="course.sections"></app-sections-list>
+        @if(ratings){
+        <app-rating-card [ratings]="ratings"></app-rating-card>
+        }
+      </div>
+  
+      <!-- Right Column: Add to Cart (Fixed) -->
+      <div class="col-lg-4 d-none d-lg-block">
+        <app-add-to-cart [course]="course" ></app-add-to-cart>
+      </div>
+    </div>
+  </div>
+  
+  }
+  

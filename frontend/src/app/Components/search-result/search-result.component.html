@@ -1,0 +1,64 @@
+<div class="search-page-container container mt-5">
+  <div class="row">
+    <!-- Header -->
+    <div class="col-12 search-header">
+      <h2>{{ courses.length}} results for "{{ searchTerm }}"</h2>
+    </div>
+
+  
+
+    <!-- Main Content -->
+    <div class="col-12 main-content row mt-3">
+      <!-- Filters Section -->
+      <div class="col-md-3 filters-section">
+        <h5>Filters</h5>
+        <!-- Add your filter controls here -->
+        <div class="filter-category">
+          <h6>Category</h6>
+          <select class="form-control" (change)="filterByCategory($event)" [(ngModel)]="catFilter">
+           <option>All Categories</option> 
+            @for(category of categories; track category.name ){
+            <option>{{category.name}}</option>
+          }
+          </select>
+        </div>
+        <!-- Add more filters as needed -->
+
+        <div class="filter-category" >
+          <h6>Price</h6>
+          <select class="form-control" (change)="filterByPrice($event)" [(ngModel)]="priceFilter">>
+           <option>All </option>
+           <option>Free </option> 
+           <option>Paid </option> 
+          </select>
+        </div>
+
+        <div class="filter-category">
+          <h6>duration</h6>
+          <select class="form-control" (change)="filterByDuration($event)" [(ngModel)]="durationFilter">
+          <option>All </option> 
+           <option>5  - 10 Hours</option> 
+           <option>10 - 20 Hours </option> 
+           <option>20+     Hours</option> 
+          </select>
+        </div>
+
+      </div>
+
+      
+      <div class="col-md-9 courses-section">
+        <div *ngFor="let course of courses" class="course-item mb-4" [routerLink]="['/course', course.id]" style="cursor: pointer;" >
+          <img [src]="course.coverPicture" alt="{{ course.title }}" class="img-fluid course-image">
+          <div class="course-details">
+            <h4 class="course-title">{{ course.title }}</h4>
+            <p class="course-price">{{ course.price || 'Free' }}</p>
+
+            <p class="course-instructor">{{ course.instructorName }}</p>
+            <p class="course-rating">{{ course.rate }} </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

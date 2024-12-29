@@ -1,0 +1,97 @@
+.add-to-cart-card {
+  /* Adjust position and width for small screens */
+  position: static !important;
+  max-width: 100%;
+  margin: 20px auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.card {
+  border: 1px solid #e3e3e3;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.card-img-top {
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.rating i {
+  color: #ffc107;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.btn {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  /* Medium screens (tablets) and up */
+  .add-to-cart-card {
+    width: 400px; /* Increased width for medium screens */
+  }
+}
+
+@media (min-width: 992px) {
+  /* Large screens (desktops) and up */
+  .add-to-cart-card {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    width: 500px; /* Further increased width for large screens */
+  }
+}
+
+.add-to-cart-btns {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+
+}
+
+.wishlist-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px; /* Adjust width to fit the heart icon */
+  color: #6C757D; /* Heart icon color */
+  border-color: #6C757D; /* Match the outline with the icon color */
+}
+
+.wishlist-btn:hover {
+  background-color:#6C757D ;
+  color: #fff;
+}
+
+.cartBtn{
+  background-color: #6772ff;
+
+}
+.cartBtn:hover {
+  color: #fff;
+  background-color: #4e56c4;
+  border-color: #4e56c4;
+}
+
+.cartBtn:focus,
+.btn-primary.focus {
+  color: #fff;
+  background-color: #4e56c4;
+  border-color: #4e56c4;
+  box-shadow: 0 0 0 0.2rem #4e56c4;
+}

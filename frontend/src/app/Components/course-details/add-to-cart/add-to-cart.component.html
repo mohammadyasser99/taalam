@@ -1,0 +1,40 @@
+<div *ngIf="course" class="add-to-cart-card">
+  <div class="card">
+    <img [src]="course.coverPicture" class="card-img-top" alt="Course Image" />
+
+    <div class="card-body text-center">
+      <h5 class="card-title">{{ course.title }}</h5>
+
+      <!-- Rating -->
+      <div class="rating my-2">
+        <i class="fa fa-star"></i>
+        <span *ngIf="course?.rate">{{ course.rate }} / 5</span>
+        <span *ngIf="!course?.rate" class="text-muted">No Rating</span>
+      </div>
+
+      <!-- Price -->
+      <h3 class="price">{{ course.price + ' EGP'}}</h3>
+
+      <!-- Add to Cart Button and Wishlist Heart Icon -->
+      <div class="add-to-cart-btns mt-3">
+        @if(isenrolledd ){
+          <button class="btn btn-primary btn-lg cartBtn " [routerLink]="['/course/content/' , course.id]">
+            go to course
+          </button>
+        }@else{
+          <button class="btn btn-primary btn-lg cartBtn " (click)="addToCart(course.id)">
+            Add to Cart
+          </button>
+
+        }
+
+        @if(!isenrolledd&&isauthh){
+        <button class="btn btn-outline-secondary btn-lg wishlist-btn" (click)="addToWishList(course.id)" >
+          <i class="fa fa-heart"></i>
+        </button>
+      }
+
+      </div>
+    </div>
+  </div>
+</div>

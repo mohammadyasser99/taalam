@@ -1,0 +1,113 @@
+<section class="slider-area slider-area2" style="
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  ">
+  <div class="slider-active" style="width: 100%">
+    <div class="single-slider slider-height2 d-flex align-items-center" style="width: 100%">
+      <div class="container">
+        <h1 style="
+            color: white;
+            font-weight: bold;
+            font-size: 34px;
+            align-self: center;
+          ">
+          {{ selectedCategoryName }} Category
+        </h1>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="container my-3" style="max-width: 1240px;">
+  <!-- Header with Category Select -->
+  <div class="row mt-4">
+    <div class="col-12">
+      <div class="dropdown mx-auto text-center my-3" id="categoryDropdown">
+        <button class="btn btn-secondary dropdown-toggle py-1" style="background-color: #6772ff;font-weight: bold;"
+          type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+
+
+
+          {{ selectedCategoryName || "Select Category" }}
+        </button>
+        <ul class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
+          @for (category of categories; track $index) {
+          <li>
+            <a class="dropdown-item" [routerLink]="['/category', category.id]"
+              (click)="onCategoryChange(category.id, category.name)">
+              {{ category.name }}
+            </a>
+          </li>
+          }
+        </ul>
+      </div>
+    </div>
+
+    <!-- Courses Grid -->
+    <div class="d-flex flex-wrap justify-content-start my-2">
+      @for (course of pagedCourses; track $index)
+      {
+        <a [routerLink]="['/course', course.id]" class="course-link">
+      <div class="card border-0 mx-2 my-2" style="width: 18rem;">
+        <img [src]="course.coverPicture" class="card-img-top" alt="{{course.title}}" style="height: 12rem">
+        <div class="card-body">
+          <h5 class="card-title fw-bold fs-5 truncate-multiline">{{course.title}}</h5>
+          <p class="card-text text-muted opacity-75 truncate fs-6 mb-2">
+            {{ course.instructorName }}<span *ngIf="course.description">, {{course.description}}</span>
+          </p>
+          <p class="card-text category-badge">{{ course.categoryName }}</p>
+
+          <div class="progress my-1" style="max-height: 2px;" role="progressbar" aria-label="Success example"
+            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+          </div>
+
+          <div class="row">
+
+            <p class="col" style="font-weight: bold;">
+              {{ course.price === 0 || course.price == null ? 'Free' : (course.price) + ' EGP' }}
+            </p>
+
+            <div class="row mb-3 text-center col">
+              <div class="col-12 stars">
+                <i *ngFor="let filled of [].constructor(course.rate)" class="fa fa-star fa-solid"></i>
+                <i *ngFor="let empty of [].constructor(5 - course.rate)" class="fa fa-star fa-regular"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+      }
+
+    </div>
+
+    <!-- Pagination -->
+    <div class="row mt-4 mx-auto w-auto">
+      <div class="col-12 text-center d-flex justify-content-center">
+        <ul class="pagination">
+          <li class="page-item" [class.disabled]="currentPage === 1">
+            <a class="page-link bg-dark text-white rounded-pill mx-1 shadow-sm cursor-pointer d-flex"
+              (click)="prevPage()">
+              <i class="bi bi-chevron-left"></i>Previous
+            </a>
+          </li>
+          @for (page of totalPagesArray; track $index) {
+          <li class="page-item" [class.active]="currentPage === page">
+            <a class="page-link bg-dark text-white rounded-pill mx-1 shadow-sm cursor-pointer border-dark"
+              (click)="goToPage(page)">
+              {{ page }}
+            </a>
+          </li>
+          }
+          <li class="page-item" [class.disabled]="currentPage === totalPages">
+            <a class="page-link bg-dark text-white rounded-pill mx-1 shadow-sm cursor-pointer d-flex"
+              (click)="nextPage()">
+              Next<i class="bi bi-chevron-right"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

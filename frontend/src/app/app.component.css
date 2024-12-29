@@ -1,0 +1,60 @@
+#preloader-active {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    background: #fff;
+}
+
+.preloader {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preloader-inner {
+    position: relative;
+    width: 100px;  /* Match the circle's size */
+    height: 100px; /* Match the circle's size */
+}
+
+.preloader-circle {
+    width: 100px;  /* Size of the circle */
+    height: 100px;  /* Size of the circle */
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-top-color: #6674FF;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    animation: spin 1s linear infinite;
+}
+
+.preloader-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.preloader-img img {
+    width: 50px;  /* Adjust as needed for the logo size */
+    height: 50px;
+    z-index: 1;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

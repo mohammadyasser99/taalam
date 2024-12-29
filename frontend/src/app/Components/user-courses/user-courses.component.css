@@ -1,0 +1,38 @@
+.no-courses-message {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 50px 0;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .no-courses-message p {
+    font-size: 19px;
+    color: #721c24;
+    margin: 0;
+  }
+
+  .course-link {
+    text-decoration: none; 
+    color: inherit;
+  }
+  
+  .course-link:hover {
+    text-decoration: none;
+  }
+
+  .slider-area{
+    background: linear-gradient(to bottom,#6473FF  0%,#4e5bca );
+    position: relative;
+    top:24px;
+  }
+  
+  @media (max-width: 991px) {
+    .slider-area{
+       background: linear-gradient(to bottom,#6473FF  0%,#4e5bca );
+       position: relative;
+       top:-34px;
+    }
+  }

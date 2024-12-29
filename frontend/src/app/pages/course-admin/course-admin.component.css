@@ -1,0 +1,23 @@
+/* Add some optional styling to improve the UI */
+.table th {
+  cursor: pointer;
+  text-align: left;
+}
+
+.table th.sortable:hover {
+  background-color: #f8f9fa;
+}
+
+.bi-arrow-up,
+.bi-arrow-down {
+  font-size: 0.8rem;
+  margin-left: 5px;
+}
+
+.input-group {
+  max-width: 400px;
+}
+
+table {
+  margin-top: 20px;
+}

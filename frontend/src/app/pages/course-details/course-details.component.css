@@ -1,0 +1,24 @@
+.fixed-top {
+  position: static;
+  top: 80px;
+  /* Adjust this value to align below the navbar */
+  right: 20px;
+  /* z-index: 1050; */
+  /* Ensure it is above other content */
+}
+
+.card-img-top {
+  height: 180px;
+  /* Adjust as needed */
+  object-fit: cover;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.test {
+  padding-left: 20px;  /* Adjust as needed */
+  padding-right: 20px; /* Adjust as needed */
+}

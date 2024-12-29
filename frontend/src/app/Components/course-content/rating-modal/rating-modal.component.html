@@ -1,0 +1,43 @@
+<!-- rating-modal.component.html -->
+<div class="modal-header">
+  <h5 class="modal-title">Rate This Course</h5>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="closeModal()"
+  ></button>
+</div>
+
+<div class="modal-body">
+  <div class="form-group">
+    <label for="rating">Rating (1-5 Stars)</label>
+    <ngb-rating
+      [(rate)]="ratingValue"
+      [max]="5"
+      [readonly]="false"
+    ></ngb-rating>
+    <span class="text-muted ms-2">{{ ratingValue }} / 5</span>
+  </div>
+
+  <div class="form-group mt-3">
+    <label for="description">Description (optional)</label>
+    <textarea
+      id="description"
+      class="form-control"
+      [(ngModel)]="description"
+      rows="3"
+      maxlength="500"
+      placeholder="Write a brief description (optional)"
+    ></textarea>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="closeModal()">
+    Cancel
+  </button>
+  <button type="button" class="btn saveBtn" (click)="submitRating()">
+    {{ isEditMode ? "Update Rating" : "Submit Rating" }}
+  </button>
+</div>

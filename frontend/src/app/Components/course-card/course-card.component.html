@@ -1,0 +1,38 @@
+<div class="card border-0 mx-2 my-2" style="width: 18rem;">
+    <img [src]="course.coverPicture" class="card-img-top" alt="{{course.title}}" style="height: 12rem">
+    <div *ngIf="showHeartIcon" class="heart-icon p-2 bg-light" (click)="toggleHeart()">
+        <i class="fa-heart" [ngClass]="isHeartFilled ? 'fa-solid' : 'fa-regular'"></i>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title fw-bold fs-5 truncate-multiline">{{course.title}}</h5>
+        <p class="card-text text-muted opacity-75 truncate fs-6 mb-2">
+            {{ course.instructorName }}<span *ngIf="course.description">, {{ course.description }}</span>
+          </p>
+          <p class="card-text category-badge">{{ course.categoryName }}</p>
+          <div *ngIf="showProgress">      
+        <div class="progress mb-2" style="max-height: 7px;" role="progressbar" aria-label="Success example"
+            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar"style="background-color: #6772ff" [style.width.%]="course.progress ?? 0"></div>
+        </div>
+        </div>
+        <div *ngIf="!showProgress">      
+            <div class="progress my-1" style="max-height: 2px;" role="progressbar" aria-label="Success example"
+                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                   </div>
+        </div>
+
+        <div class="row">
+            <p *ngIf="showProgress" class="col">{{course.progress ?? 0}}% Complete</p>
+            <p *ngIf="!showProgress" class="col" style="font-weight: bold;">
+                {{ course.price === 0 || course.price == null ? 'Free' : (course.price) + ' EGP' }}
+              </p>
+              
+            <div class="row mb-3 text-center col">
+                <div class="col-12 stars">
+                    <i *ngFor="let filled of [].constructor(course.rate)" class="fa fa-star fa-solid"></i>
+                    <i *ngFor="let empty of [].constructor(5 - course.rate)" class="fa fa-star fa-regular"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<section class="slider-area slider-area2" style="height: 70px; display: flex; align-items: center; justify-content: center;">
+  <div class="slider-active" style="width: 100%;">
+      <div class="single-slider slider-height2 d-flex align-items-center" style="width: 100%;">
+          <div class="container">
+              <h1 style=" color: white; font-weight: bold; font-size: 34px; align-self: center;">My Wishlist</h1>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+<div class="container mt-4 pt-3">
+    <!-- <h2 class="fw-bold mb-3">My Wishlist</h2> -->
+    <div class="row">
+      <div class="col-md-12" *ngIf="courses.length === 0">
+        <div class="container d-flex justify-content-center align-items-center mt-5 mb-5">
+            <div class="empty-cart-box text-center p-50">
+              
+              <!-- <h3 class="fw-bold">Your cart is empty.</h3> -->
+              <p class="text-muted">Search For new courses!</p>
+              <a    routerLink=""
+              routerLinkActive="active" class="btn-courses ; mt-3 ">View Courses</a>
+            </div>
+          </div>
+      </div>
+
+      <div class="col-md-12" *ngIf="courses.length > 0">
+        <div class="row">
+          <div class="col-md-3 mb-4" *ngFor="let course of courses">
+            <div class="wishlist-item card position-relative"> <!-- Add position-relative here -->
+              <div class="wishlist-icon position-absolute top-0 end-0 m-2"> <!-- Add position-absolute here -->
+                <button class="btn" (click)="removeItemFromWishlist(course.id)">
+                  <i class="fas fa-heart white"></i> 
+                </button>
+              </div>
+              <div class="row g-0">
+                <div class="col-12">
+                  <img src="{{ course.coverPicture }}" class="img-fluid rounded-start" alt="{{ course.title }}" [routerLink]="['/course', course.id]" style="cursor: pointer;">
+                </div>
+                <div class="col-12">
+                  <div class="card-body">
+                    <h5 class="card-title" [routerLink]="['/course', course.id]" style="cursor: pointer;">{{ course.title }} </h5>
+                    <p class="card-text">{{ course.instructorName }}</p>
+                    <div class="d-flex align-items-center">
+                      <span class="text-warning me-2">{{ course.rating }}</span>
+                      <span class="me-2">
+                        <i class="rating-color fas fa-star"></i>
+                      </span>
+                      <span class="text-muted">{{ course.rate }}</span>
+                    </div>
+                    <p class="card-text text-success fw-bold mt-2">{{ course.price + 'EGP' }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+      </div>
+
+    </div>
+  </div>
+  

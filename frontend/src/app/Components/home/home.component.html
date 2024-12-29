@@ -1,0 +1,457 @@
+<div class="home-cont">
+  <!-- Carousel Start -->
+  <div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
+    <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="w-100" src="assets/img/h1_hero1.png" alt="Image" />
+          <div class="carousel-caption">
+            <div class="container">
+              <div class="row justify-content-start">
+                <div class="col-lg-8 text-start">
+                  <!-- Added text-start to align text to the left -->
+                  <h1 style="color: #fff" class="d-inline-block fw-semi-bold py-1 animated slideInDown">
+                    Welcome {{ username }}
+                  </h1>
+
+                  @if(!'token'){
+
+                  <h2 class="display-1 mb-4 animated slideInDown"
+                    style="color: #fff; text-align: left; padding-left: 0">
+                    Jump into learning for less
+                  </h2>
+
+                  <a routerLink="../login" class="btn1 button-header">Get Started</a>
+
+                  } @else{
+                  <h2 class="display-1 mb-4 animated slideInDown"
+                    style="color: #fff; text-align: left; padding-left: 0">
+                    Keep learning with passion and dedication!
+                  </h2>
+
+                  <a [routerLink]="['/userCourses']" routerLinkActive="active" class="btn1 button-header">My
+                    Learning</a>
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="w-100" src="assets/img/h1_hero1.png" alt="Image" />
+          <div class="carousel-caption">
+            <div class="container">
+              <div class="row justify-content-start">
+                <div class="col-lg-8 text-start">
+                  <!-- Added text-start to align text to the left -->
+                  <h1 style="color: #fff" class="d-inline-block fw-semi-bold py-1 animated slideInDown">
+                    Welcome {{ username }}
+                  </h1>
+
+                  @if(!'token '){
+
+                  <h2 class="display-1 mb-4 animated slideInDown"
+                    style="color: #fff; text-align: left; padding-left: 0">
+                    Subscribe to the best courses
+                  </h2>
+
+                  <a routerLink="../login" class="btn1 button-header">Get Started</a>
+                  } @else{
+                  <h2 class="display-1 mb-4 animated slideInDown"
+                    style="color: #fff; text-align: left; padding-left: 0">
+                    Stay committed to your learning journey!
+                  </h2>
+
+                  <a [routerLink]="['/userCourses']" routerLinkActive="active" class="btn1 button-header">My
+                    Learning</a>
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev p-0" type="button" data-bs-target="#header-carousel" data-bs-slide="prev"
+        style="justify-content: start; width: 3rem">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next"
+        style="justify-content: end; width: 3rem">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  <!-- Carousel End -->
+
+  <!-- ? services-area -->
+  <div class="services-area custom-services">
+    <div class="container">
+      <div class="row justify-content-sm-center">
+        <div class="col-lg-4 col-md-6 col-sm-8">
+          <div class="single-services mb-30">
+            <div class="features-icon">
+              <img src="assets/img/icon/icon1.svg" alt="" />
+            </div>
+            <div class="features-caption">
+              <h3>60+ UX courses</h3>
+              <p>The automated process all your website tasks.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-8">
+          <div class="single-services mb-30">
+            <div class="features-icon">
+              <img src="assets/img/icon/icon2.svg" alt="" />
+            </div>
+            <div class="features-caption">
+              <h3>Expert instructors</h3>
+              <p>The automated process all your website tasks.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-8">
+          <div class="single-services mb-30">
+            <div class="features-icon">
+              <img src="assets/img/icon/icon3.svg" alt="" />
+            </div>
+            <div class="features-caption">
+              <h3>Life time access</h3>
+              <p>The automated process all your website tasks.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- courses Start -->
+  <div class="container-xxl py-5 mb-5">
+    <div class="container">
+      <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+        <h1 class="display-5 mb-5" style="color:#4e56c4">New On Taalam</h1>
+      </div>
+
+      <div class="owl-carousel project-carousel wow fadeInUp" data-wow-delay="0.3s">
+        <div class="course-card-wrapper" *ngFor="let course of courses">
+          <a [routerLink]="['/course', course.id]" class="course-link">
+            <app-course-card [course]="course" [showHeartIcon]="false" [showProgress]="false"></app-course-card>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- courses End -->
+
+    <!-- join us start-->
+    <div *ngIf="!'token'" mt-5>
+      <section class="promo-section py-5">
+        <div class="promo-container">
+          <div class="row align-items-center">
+            <div class="col-md-6">
+              <img
+                src="https://www.pembrokeshire.ac.uk/wp-content/uploads/2022/05/happy-black-student-guy-in-eyeglasses-sitting-with-2022-02-03-06-18-54-utc-1024x683.jpg"
+                alt="Instructor" class="img-fluid pe-2" />
+            </div>
+            <div class="col-md-6">
+              <h2>
+                Take the next step toward your personal and professional goals
+                with us.
+              </h2>
+              <p>
+                The automated process all your website tasks. Discover tools and
+                techniques to engage effectively with vulnerable children and
+                young people.
+              </p>
+              <a routerLink="../login" class="btn1 button-header">Join Us</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- join us end-->
+
+    <!-- category start -->
+    <!--? top subjects Area Start -->
+    <div class="topic-area section-padding40 mt-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-7 col-lg-8">
+            <div class="section-tittle text-center mb-55">
+              <h2 style="color:#4e56c4">Explore top subjects</h2>
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-md-4 col-sm-6 py-3">
+            <div class="single-topic text-center mb-30">
+              <div class="topic-img">
+                <img src="assets/img/gallery/topic1.png" alt="" />
+                <div class="topic-content-box">
+                  <div class="topic-content">
+                    <h3><a routerLink="/category/3">Programing</a></h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 py-3">
+            <div class="single-topic text-center mb-30">
+              <div class="topic-img">
+                <img src="assets/img/gallery/topic2.png" alt="" />
+                <div class="topic-content-box">
+                  <div class="topic-content">
+                    <h3><a routerLink="/category/5">Sporting</a></h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 py-3">
+            <div class="single-topic text-center mb-30">
+              <div class="topic-img">
+                <img src="assets/img/gallery/topic3.png" alt="" />
+                <div class="topic-content-box">
+                  <div class="topic-content">
+                    <h3><a routerLink ="/category/9">History</a></h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 py-3">
+            <div class="single-topic text-center mb-30">
+              <div class="topic-img">
+                <img src="assets/img/gallery/topic4.png" alt="" />
+                <div class="topic-content-box">
+                  <div class="topic-content">
+                    <h3><a routerLink ="/category/8">physics</a></h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 py-3">
+            <div class="single-topic text-center mb-30">
+              <div class="topic-img">
+                <img src="assets/img/gallery/topic5.png" alt="" />
+                <div class="topic-content-box">
+                  <div class="topic-content">
+                    <h3><a routerLink ="/category/7">Mathematicals</a></h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 py-3">
+            <div class="single-topic text-center mb-30">
+              <div class="topic-img">
+                <img src="assets/img/gallery/topic6.png" alt="" />
+                <div class="topic-content-box">
+                  <div class="topic-content">
+                    <h3><a routerLink ="/category/6">chemistry</a></h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 py-3">
+            <div class="single-topic text-center mb-30">
+              <div class="topic-img">
+                <img src="assets/img/gallery/topic7.png" alt="" />
+                <div class="topic-content-box">
+                  <div class="topic-content">
+                    <h3><a routerLink ="/category/10">Arts</a></h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 py-3">
+            <div class="single-topic text-center mb-30">
+              <div class="topic-img">
+                <img src="assets/img/gallery/topic8.png" alt="" />
+                <div class="topic-content-box">
+                  <div class="topic-content">
+                    <h3><a routerLink ="/category/4">Geography</a></h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-xl-12">
+            <div class="section-tittle text-center mt-20">
+              <a href="courses.html" class="border-btn">View More Subjects</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- top subjects End -->
+    <!-- category end -->
+
+    <!--? About Area-3 Start -->
+    <section class="about-area3 fix">
+      <div class="support-wrapper align-items-center">
+        <div class="right-content3">
+          <!-- img -->
+          <div class="right-img">
+            <img src="assets/img/gallery/about3.png" alt="" />
+          </div>
+        </div>
+        <div class="left-content3">
+          <!-- section title -->
+          <div class="section-tittle section-tittle2 mb-20">
+            <div class="front-text">
+              <h2 style="color:#4e56c4">Learner outcomes on courses you will take</h2>
+            </div>
+          </div>
+
+          <div class="single-features">
+            <div class="icon-caption">
+              <img src="assets/img/icon/right-icon.svg" alt="" />
+              <div class="features-caption">
+                <p>
+                  Techniques to engage effectively with vulnerable children and
+                  young people.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="single-features">
+            <div class="icon-caption">
+              <img src="assets/img/icon/right-icon.svg" alt="" />
+              <div class="features-caption">
+                <p>
+                  Join millions of people from around the world learning
+                  together.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="single-features">
+            <div class="icon-caption">
+              <img src="assets/img/icon/right-icon.svg" alt="" />
+              <div class="features-caption">
+                <p>
+                  Join millions of people from around the world learning
+                  together. Online learning is as easy and natural.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Area End -->
+
+    <!-- become instructor section -->
+
+    <section class="instructor-section py-5">
+      <div class="ins-container">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <img src="https://productaplusonlinetutoring.com/wp-content/uploads/2021/03/instructor-1-1.jpg"
+              alt="Instructor" class="img-fluid pe-2" />
+          </div>
+          <div class="col-md-6">
+            <h2 style="color:#4e56c4">Become an instructor</h2>
+            <p>
+              Instructors from around the world teach millions of learners on
+              Taalam. We provide the tools and skills to teach what you love.
+            </p>
+            <a routerLink="/createcourse" class="btn1 button-header">Start teaching today</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- become instructor-ends -->
+
+
+    <!-- Testimonial Start -->
+    <div class="container-xxl py-5">
+      <div class="container">
+        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px">
+          <!-- <p
+        class="d-inline-block border rounded text-primary fw-semi-bold py-1 px-3"
+      >
+        Testimonial
+      </p> -->
+          <h1 class="display-5 mb-5" style="color:#4e56c4">From Taalam Community</h1>
+        </div>
+        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.3s">
+          <div class="testimonial-item">
+            <div class="testimonial-text border rounded p-4 pt-5 mb-5">
+              <div class="btn-square bg-white border rounded-circle">
+                <i class="fa fa-quote-right fa-2x text-primary"></i>
+              </div>
+              The quality of education and the support from the faculty have
+              been exceptional! The hands-on approach and interactive lessons
+              have made learning both engaging and effective. I’ve gained so
+              much knowledge and confidence in my abilities.
+            </div>
+            <img class="rounded-circle mb-3" src="assets/img/testimonial-1.jpg" alt="" />
+            <h4>Noah Smith</h4>
+            <span>Developer</span>
+          </div>
+          <div class="testimonial-item">
+            <div class="testimonial-text border rounded p-4 pt-5 mb-5">
+              <div class="btn-square bg-white border rounded-circle">
+                <i class="fa fa-quote-right fa-2x text-primary"></i>
+              </div>
+              This course has been fantastic! The content is well-structured and
+              easy to follow, and the instructor is incredibly engaging. I've
+              learned so much and feel much more confident in my skills. Highly
+              recommend to anyone looking to upskill online!
+            </div>
+            <img class="rounded-circle mb-3" src="assets/img/testimonial-2.jpg" alt="" />
+            <h4>Ethan Wilson</h4>
+            <span>Designer</span>
+          </div>
+          <div class="testimonial-item">
+            <div class="testimonial-text border rounded p-4 pt-5 mb-5">
+              <div class="btn-square bg-white border rounded-circle">
+                <i class="fa fa-quote-right fa-2x text-primary"></i>
+              </div>
+              This eLearning platform exceeded my expectations. The course was
+              well-designed, and the instructor’s explanations were clear and
+              thorough. I appreciated the hands-on approach and the ability to
+              revisit materials as needed. It’s been a fantastic learning
+              experience!
+            </div>
+            <img class="rounded-circle mb-3" src="assets/img/testimonial-3.jpg" alt="" />
+            <h4>Mason Davis</h4>
+            <span>Business Analytic</span>
+          </div>
+          <div class="testimonial-item">
+            <div class="testimonial-text border rounded p-4 pt-5 mb-5">
+              <div class="btn-square bg-white border rounded-circle">
+                <i class="fa fa-quote-right fa-2x text-primary"></i>
+              </div>
+              The course was fantastic! The lessons were clear, the pace was
+              perfect, and the resources provided were incredibly helpful. I
+              gained practical skills that I can immediately apply. This is by
+              far the best online learning experience I've had!
+            </div>
+            <img class="rounded-circle mb-3" src="assets/img/testimonial-4.jpg" alt="" />
+            <h4>Lucas Garcia</h4>
+            <span>UI/UX Designer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Testimonial End -->
+
+    <!-- Back to Top -->
+
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top btn-top"><i
+        class="bi bi-arrow-up"></i></a>
+  </div>
+</div>

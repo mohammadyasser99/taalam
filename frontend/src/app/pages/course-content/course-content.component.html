@@ -1,0 +1,46 @@
+@if(course){
+<app-nav-course  [courseId]="course.id!" [courseTitle]="course.title"  [progressPercentage]="course.studentEnrollment?.progressPercentage"></app-nav-course>
+}
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar (1/3 of the screen) -->
+    @if(course&&course.sections){
+
+    <div class="col-md-4 overflow-auto" style="max-height: calc(180vh - 200px);">
+      <app-sections-sidebar
+        [sections]="course.sections"
+        (lessonSelected)="onLessonSelected($event)"
+      ></app-sections-sidebar>
+    </div>
+    }
+
+    <!-- Main Content (2/3 of the screen) -->
+    <div class="col-md-8">
+      @if(selectedLesson?.content){
+
+      <div class="mb-4">
+        <!-- Video Player -->
+        <app-course-video-player
+          [content]="selectedLesson?.content!"
+        ></app-course-video-player>
+      </div>
+      }
+
+      <!-- Lesson Description -->
+      @if (selectedLesson) {
+      <app-course-description
+        [courseId]="courseId"
+        [selectedLesson]="selectedLesson"
+        [progressPercentage]="progressPercentage"
+        (progressUpdated)="onProgressUpdated(1)"
+        (nextLesson)="goToNextLesson()"
+        [isLastLesson]="isLastLesson"
+        [isFirstLesson]="isFirstLesson"
+        (PrevLesson)="goToPrevLesson()"
+      ></app-course-description>
+      }
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

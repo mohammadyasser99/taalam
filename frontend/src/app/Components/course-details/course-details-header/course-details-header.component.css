@@ -1,0 +1,58 @@
+.course-header {
+  background-color: #f8f9fa;
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
+
+.display-4 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #343a40;
+}
+
+.lead {
+  font-size: 1.25rem;
+  color: #6c757d;
+}
+
+.course-meta {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.rating i {
+  color: #ffc107;
+}
+
+.badge {
+  font-size: 1rem;
+  padding: 0.5em;
+}
+
+.price {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.instructor-info {
+  display: flex;
+  align-items: center;
+}
+
+.instructor-avatar {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.text-muted {
+  color: #6c757d !important;
+}
+.course-link {
+  text-decoration: none; 
+  color: inherit;
+}
+
+.course-link:hover {
+  text-decoration: none;
+}

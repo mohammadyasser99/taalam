@@ -1,0 +1,58 @@
+<div class="modal-header">
+  <h5 class="modal-title">Share This Course</h5>
+  <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+</div>
+
+<div class="modal-body">
+  <!-- Copy Link Section -->
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      id="shareLink"
+      [value]="shareLink"
+      readonly
+    />
+    <button
+      class="btn btn-outline-secondary"
+      type="button"
+      (click)="copyToClipboard()"
+    >
+      Copy Link
+    </button>
+  </div>
+
+  <!-- Share via Social Media -->
+  <div class="text-center">
+    <button
+      class="btn btn-success me-2"
+      (click)="shareOnWhatsApp()"
+      placement="top"
+      ngbTooltip="Share on WhatsApp"
+    >
+      <i class="bi-whatsapp"></i> WhatsApp
+    </button>
+
+    <button
+      class="btn btn-info me-2"
+      (click)="shareViaEmail()"
+      placement="top"
+      ngbTooltip="Share via Email"
+    >
+      <i class="bi-envelope"></i> Email
+    </button>
+
+    <button
+      class="btn btn-primary"
+      (click)="shareViaSMS()"
+      placement="top"
+      ngbTooltip="Share via SMS"
+    >
+      <i class="bi-chat"></i> SMS
+    </button>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+</div>

@@ -1,0 +1,53 @@
+<div class="container" style="margin-top: 50px;">
+    <!-- Search input -->
+    <input
+      type="text"
+      class="form-control mb-3"
+      placeholder="Search by name or email"
+      [(ngModel)]="searchTerm"
+      (input)="filterUsers()" 
+    />
+  
+    <!-- Table -->
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          
+          <th scope="col">IsConfirmed</th>
+          <th scope="col">approve</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let user of filteredUsers | paginate: { itemsPerPage: 5, currentPage: page }
+          "
+        >
+          <th scope="row">{{ user.id }}</th>
+          <td>{{ user.fName }}</td>
+          <td>{{ user.email }}</td>
+    
+          <td>
+           {{user.emailConfirmed}}
+          </td>
+            <td>
+                <a class="btn btn-success" (click)="approveuser(user.id)" >Approve</a>
+            </td>
+          <td>
+            <a class="btn btn-danger" (click)="deleteuser(user.id)">Delete</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Pagination controls -->
+    <pagination-controls
+      (pageChange)="page = $event"
+      class="d-flex justify-content-center"
+    ></pagination-controls>
+  </div>
+  

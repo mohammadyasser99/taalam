@@ -1,0 +1,27 @@
+<div ngbAccordion [closeOthers]="false">
+  <div *ngFor="let section of sections" ngbAccordionItem>
+    <h2 ngbAccordionHeader>
+      <button ngbAccordionButton>
+        {{ section.title }}
+      </button>
+    </h2>
+    <div ngbAccordionCollapse>
+      <div ngbAccordionBody>
+        <ng-template>
+          <div>
+            <ul class="list-group">
+              @if (section.lessons.length > 0) {
+              <li
+                *ngFor="let lesson of section.lessons"
+                class="list-group-item"
+              >
+                <i class="bi-play-circle me-2"></i> {{ lesson.title }}
+              </li>
+              }
+            </ul>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

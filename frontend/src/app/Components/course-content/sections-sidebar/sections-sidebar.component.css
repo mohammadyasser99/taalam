@@ -1,0 +1,13 @@
+/* Adjust the max height and scrolling behavior */
+.scrollable-list {
+  max-height: calc(100vh - 200px);
+  /* Adjust height as needed */
+  overflow-y: auto;
+}
+
+/* Highlight selected lesson */
+.list-group-item.bg-primary {
+  background-color: #007bff !important;
+  /* Bootstrap primary color */
+  color: white !important;
+}

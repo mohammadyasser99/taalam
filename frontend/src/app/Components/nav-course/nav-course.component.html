@@ -1,0 +1,46 @@
+<div class="mb-5">
+<nav id="mainNavbar" class="navbar navbar-expand-lg navbar-light py-lg-0 px-lg-5 wow fadeIn">
+  <!-- Logo -->
+  <a class="navbar-brand d-flex align-items-center ms-4 ms-lg-0" routerLink="/home">
+    <img src="assets/img/l2.svg" alt="Logo" class="me-2" />
+    <h1 class="display-5 m-0" style="color: #fff">Taalam</h1>
+  </a>
+
+  <!-- Centered Course Title -->
+  <div class="mx-auto text-center">
+    <h2 class="m-0" style="color: #fff">{{ courseTitle || "Course Title" }}</h2>
+  </div>
+
+  <!-- Right Side Icons: Share & User Profile -->
+  <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center">
+
+    <!-- Share Icon -->
+    <li class="nav-item" (click)="openShareModal()">
+      <a class="nav-link" style="color: #fff; cursor: pointer;" >
+        <i class="fas fa-share-alt fa-lg"></i>
+      </a>
+    </li>
+
+    <!-- User Icon with Dropdown -->
+    <li class="nav-item dropdown" id="userDropdown">
+      <a class="nav-link d-flex align-items-center justify-content-center text-white rounded-circle dropdown-toggle"
+         id="userDropdownMenu" role="button" (click)="toggleDropdown('userDropdown')" aria-expanded="false">
+        <i class="fas fa-user fa-lg"></i>
+      </a>
+
+      <!-- User Dropdown Menu -->
+      <ul class="dropdown-menu" [ngClass]="{ show: isDropdownOpen['userDropdown'] }" aria-labelledby="userDropdownMenu">
+        <li>
+          <a class="dropdown-item" [routerLink]="['/userProfile', userId]">Profile</a>
+        </li>
+        <li>
+          <a class="dropdown-item" [routerLink]="['/userCourses']">My Learning</a>
+        </li>
+        <li>
+          <a class="dropdown-item" (click)="logout()">Log Out</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>

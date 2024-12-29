@@ -1,0 +1,28 @@
+<div class="container mx-auto my-5 text-center">
+    @if (message == 'true') {
+        <!-- Success Message -->
+        <div class="alert alert-success py-5">
+            <h1 class="display-4">
+            <i class="bi bi-check-circle-fill"></i> Payment Successful!
+            </h1>
+            <p class="lead">Thank you for your purchase. You are now enrolled in your selected courses.</p>
+        </div>
+    }
+    @if (message == 'false') {
+        <!-- Fail Message -->
+        <div class="alert alert-danger py-5">
+            <h1 class="display-4">
+                <i class="bi bi-check-circle-fill"></i> Payment Failed!
+            </h1>
+            <p class="lead">Something occured, You can try again later.</p>
+            </div>
+    }
+    
+
+    <!-- Action Buttons -->
+    <div class="mt-5">
+        <a [routerLink]="['/userCourses']" routerLinkActive="router-link-active"  class="btn btn-lg me-3" style="background-color: #6772ff;color: aliceblue;">Go to My Learnings</a>
+        <a routerLink="/home" class="btn btn-outline-primary btn-lg">Browse More Courses</a>
+    </div>
+</div>
+
