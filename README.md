@@ -14,6 +14,8 @@
 ## Architectural Highlights:
 - Three-Tier Architecture: The application follows a modular design with clear separation of concerns (Presentation Layer, Business Logic Layer, and Data Access Layer).
 - Scalable & Maintainable: Built using industry-standard practices for future growth and ease of maintenance.
+## demo video
+https://github.com/user-attachments/assets/bf601d9b-d6b9-4e27-9994-881afeae8312
 
 ### starting the backend
 #### Prerequisites:
