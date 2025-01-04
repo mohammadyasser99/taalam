@@ -27,7 +27,7 @@
 $ git clone git@github.com:mohammadyasser99/taalam.git
 cd taalam/backend
 ```
-- and Navigate to the backend folder :
+- Navigate to the backend folder :
 ```
 cd backend
 ```
@@ -43,6 +43,28 @@ dotnet ef database update
 ```
 dotnet run
 ```
+### Starting the Frontend
+#### Prerequisites:
+- Install Node.js .
+- Install Angular CLI globally if not installed
+```
+npm install -g @angular/cli
+```
+
+#### steps:
+- Navigate to the frontend folder:
+```
+cd frontend
+```
+- Install the dependencies:
+```
+npm install
+```
+Start the Angular development server:
+```
+ng serve 
+```
+- By default, the frontend will be accessible at http://localhost:4200.
 
 
 
